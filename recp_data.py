@@ -8,7 +8,7 @@ import pickle
 FType = torch.FloatTensor
 LType = torch.LongTensor
 
-poi_info_path = "dataset/poi_info.pickle"  # poi  category2id
+poi_info_path = "dataset/poi_info.pickle" 
 a_path = 'dataset/attribute_m.pickle'
 s_path = 'dataset/source_matrix.pickle'
 d_path = 'dataset/destina_matrix.pickle'
@@ -97,14 +97,13 @@ class ReData:
             poi_train = np.delete(poi_train, col_index, axis=1)
 
             poi_augs.append(poi_train)
-            #######
+
         for i in range(4):
             flow_pickup, flow_dropoff = [], []
             for idx in range(270):
                 pickup_matrix = self.s_m[idx]
                 dropoff_matrix = self.d_m[idx]
 
-                # augumention
                 pickup_matrix = self.gaussian_noise(pickup_matrix, seed + i, sigma=0.0001)
                 dropoff_matrix = self.gaussian_noise(dropoff_matrix, seed + i, sigma=0.0001)
 
@@ -113,7 +112,7 @@ class ReData:
 
             flowup_augs.append(flow_pickup)
             flowoff_augs.append(flow_dropoff)
-        # ？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+
         return [[np.array(poi_augs[0]), np.array(poi_augs[1]), np.array(poi_augs[2])],
                 [np.array(flowup_augs[0]), np.array(flowup_augs[1]), np.array(flowup_augs[2]),
                  np.array(flowup_augs[3]), ],
@@ -122,4 +121,3 @@ class ReData:
                 ]
 
 
-sl=ReData()
