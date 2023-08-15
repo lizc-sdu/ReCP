@@ -18,6 +18,7 @@ These are the source codes for the **ReCP** model and its corresponding data.
   5. configure.py — The hyper-parameters, the training options are defined in this file.
   
 - Region Representations
+
   embeddings/ — These are the trained region representations for 10 times. 
 
 - Tasks
